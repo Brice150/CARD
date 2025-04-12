@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="front">
+    <img [src]="imagePath + 'Logo.webp'" alt="Logo" />
+    <span class="name">{{ enterprise.titleFront }}</span>
+  </div>
+  <div class="back">
+    <span class="name">{{ enterprise.titleBack }}</span>
+    <span>{{ enterprise.subtitleBack }}</span>
+    <div class="gold-line"></div>
+    <div class="flex">
+      <i class="bx bxs-phone"></i>
+      <span class="text">{{ enterprise.phoneNumbers }}</span>
+    </div>
+    <div class="flex">
+      <i class="bx bxs-envelope"></i>
+      <span class="text">{{ enterprise.email }}</span>
+    </div>
+    <div class="qr-container">
+      <div class="qr-code">
+        <img [src]="imagePath + 'QR-Code.png'" alt="QR Code" />
+      </div>
+    </div>
+  </div>
+</div>
