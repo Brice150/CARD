@@ -19,7 +19,6 @@
   perspective: 800px;
   transform-style: preserve-3d;
   transition: transform 2s;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -99,6 +98,11 @@
   gap: 10px;
 }
 
+.card .back a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .card .back .flex .text {
   width: 272px;
   text-align: center;
@@ -137,24 +141,18 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: 50%;
 }
 
 .card .back .qr-container .qr-code {
   position: absolute;
-  bottom: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: var(--card-background-back);
+  bottom: 5px;
+  width: 85px;
+  height: 85px;
 }
 
 .card .back .qr-container .qr-code img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 388px) {

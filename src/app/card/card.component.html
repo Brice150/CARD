@@ -11,10 +11,15 @@
       <i class="bx bxs-phone"></i>
       <span class="text">{{ enterprise.phoneNumbers }}</span>
     </div>
-    <div class="flex">
+    <a
+      class="flex"
+      [href]="'mailto:' + enterprise.email"
+      target="_blank"
+      title="Envoyez nous un email"
+    >
       <i class="bx bxs-envelope"></i>
       <span class="text">{{ enterprise.email }}</span>
-    </div>
+    </a>
     <div class="qr-container">
       <div class="qr-code">
         <img [src]="imagePath + 'QR-Code.png'" alt="QR Code" />
