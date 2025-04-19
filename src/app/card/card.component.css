@@ -64,16 +64,6 @@
   font-weight: bold;
   letter-spacing: 3px;
   color: #f6e27a;
-  background-image: linear-gradient(
-    to right,
-    #daa960 0,
-    #f6e27a 45%,
-    #f6e27a 55%,
-    #daa960 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
 }
 
 .card .back {
