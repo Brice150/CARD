@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
-export class ContactComponent {}
+export class ContactComponent implements OnInit {
+  activatedRoute = inject(ActivatedRoute);
+  type!: string | null;
+
+  ngOnInit(): void {
+    this.type = this.activatedRoute.snapshot.paramMap.get('type');
+    console.log(this.type);
+  }
+}

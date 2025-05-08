@@ -8,4 +8,17 @@ import { ClientComponent } from './client/client.component';
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css',
 })
-export class ClientsComponent {}
+export class ClientsComponent {
+  searchArrayParticulier: string[] = [
+    'Locataire',
+    'Acheteur',
+    'Vendeur',
+    'Autre',
+  ];
+  searchArrayProfessionnel: string[] = [
+    'Agent immobilier',
+    'Banquier',
+    'Notaire',
+    'Autre',
+  ];
+}

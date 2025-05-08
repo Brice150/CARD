@@ -1,1 +1,11 @@
-<p>client works!</p>
+<section>
+  <h3>{{ type }}</h3>
+  <ul>
+    @for (search of searchArray; track $index) {
+    <li>{{ search }}</li>
+    }
+  </ul>
+  <a [routerLink]="'/contact/' + type" [title]="'Je suis un ' + type">
+    <span>Je suis un {{ type }}</span>
+  </a>
+</section>
