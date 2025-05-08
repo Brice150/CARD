@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Client } from '../../../core/interfaces/client';
 
 @Component({
   selector: 'app-client',
@@ -9,6 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './client.component.css',
 })
 export class ClientComponent {
-  @Input() type!: string;
-  @Input() searchArray: string[] = [];
+  @Input() client!: Client;
 }

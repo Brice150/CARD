@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ClientComponent } from './client/client.component';
+import { Client } from '../../core/interfaces/client';
+import { clients } from '../../shared/data/clients';
 
 @Component({
   selector: 'app-clients',
@@ -9,16 +11,5 @@ import { ClientComponent } from './client/client.component';
   styleUrl: './clients.component.css',
 })
 export class ClientsComponent {
-  searchArrayParticulier: string[] = [
-    'Locataire',
-    'Acheteur',
-    'Vendeur',
-    'Autre',
-  ];
-  searchArrayProfessionnel: string[] = [
-    'Agent immobilier',
-    'Banquier',
-    'Notaire',
-    'Autre',
-  ];
+  clients: Client[] = clients;
 }

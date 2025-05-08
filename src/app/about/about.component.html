@@ -1,1 +1,59 @@
-<p>about works!</p>
+<section>
+  <div class="title">
+    <i class="bx bxs-briefcase-alt"></i>
+    <h2>Société & Gérants</h2>
+  </div>
+  <p class="first">
+    Fondée le 11 janvier 2024, <span>LECOMTE INVESTMENTS</span> est une société
+    civile immobilière familiale inscrite au R.C.S de Caen sous le SIRET 983 377
+    037 00012. Cette société reflète notre ambition commune de bâtir un
+    patrimoine immobilier solide et durable.
+  </p>
+  <p>
+    La SCI est dirigée par <span>Brice et Pierre Lecomte</span>, deux associés
+    gérants partageant une vision stratégique et une passion pour
+    l’investissement immobilier. Leur expertise et leur engagement familial sont
+    les piliers de cette aventure entrepreneuriale.
+  </p>
+</section>
+<section>
+  <div class="title">
+    <i class="bx bxs-building-house"></i>
+    <h2>Biens Ciblés</h2>
+  </div>
+  <div class="flex">
+    @for (good of goods; track $index) {
+    <app-good [good]="good"></app-good>
+    }
+  </div>
+</section>
+<section>
+  <div class="title">
+    <i class="bx bxs-donate-heart"></i>
+    <h2>Nos Valeurs</h2>
+  </div>
+  <ul>
+    <li>
+      <span>Transparence</span> : Garantir une communication ouverte et sincère
+      avec nos partenaires et locataires.
+    </li>
+    <li>
+      <span>Engagement familial</span> : Construire un patrimoine solide et
+      prospère.
+    </li>
+    <li>
+      <span>Qualité</span> : Proposer des biens confortables et bien entretenus.
+    </li>
+    <li>
+      <span>Vision à long terme</span> : Privilégier des investissements stables
+      et durables.
+    </li>
+  </ul>
+  <p>
+    Chez <span>LECOMTE INVESTMENTS</span>, nous croyons qu’un patrimoine
+    immobilier de qualité repose sur une gestion éthique et responsable,
+    orientée vers la satisfaction des locataires et la valorisation durable des
+    investissements. Cette vision guide nos décisions pour bâtir un avenir
+    solide et prometteur.
+  </p>
+</section>

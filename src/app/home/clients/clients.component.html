@@ -1,13 +1,8 @@
 <section>
   <h2>Qui êtes-vous ?</h2>
   <div class="flex">
-    <app-client
-      [type]="'particulier'"
-      [searchArray]="searchArrayParticulier"
-    ></app-client>
-    <app-client
-      [type]="'professionnel'"
-      [searchArray]="searchArrayProfessionnel"
-    ></app-client>
+    @for (client of clients; track $index) {
+    <app-client [client]="client"></app-client>
+    }
   </div>
 </section>
