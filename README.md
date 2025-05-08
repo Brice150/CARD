@@ -2,7 +2,7 @@
 <img height="130px" width="130px" src="./src/assets/images/Logo.webp">
 </div>
   
-# CARD, a flipping visit card
+# CARD, an enterprise web site with a flipping visit card
 
 Frontend : Angular
 <br>
@@ -10,9 +10,17 @@ Frontend : Angular
 <details>
   <summary>Pages Features</summary>
 
-### Main page
+### Home
 
-- View a visit card than can be flipped when you hover it
+- View a flipping visit card in a home page
+
+### A Propos
+
+- View informations about the compagny
+
+### Contact
+
+- View a contact form with validators
 
 </details>
 
