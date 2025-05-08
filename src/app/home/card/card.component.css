@@ -7,7 +7,7 @@
   margin-top: 20px;
 }
 
-.card {
+section {
   position: relative;
   display: flex;
   justify-content: center;
@@ -23,18 +23,18 @@
   animation: rotateCardWithPause 6s infinite ease-in-out;
 }
 
-.card:hover {
+section:hover {
   animation-play-state: paused;
 }
 
-.card span {
+section span {
   font-size: 18px;
   font-weight: 500;
   color: var(--secondary);
 }
 
-.card .front,
-.card .back {
+section .front,
+section .back {
   position: absolute;
   top: 0;
   left: 0;
@@ -48,71 +48,81 @@
   border-radius: var(--light-radius);
 }
 
-.card .front {
+section .front {
   justify-content: center;
   gap: 30px;
   background-color: var(--secondary);
 }
 
-.card .front img {
+section .front img {
   width: 100px;
   height: 100px;
 }
 
-.card .front .name {
+section .front h1 {
   text-align: center;
   margin: 0 10px;
+  padding: 0;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 3px;
   color: var(--accent);
 }
 
-.card .back {
+section .back {
   gap: 15px;
   background-color: var(--primary);
   transform: rotateY(180deg);
 }
 
-.card .back .name {
+section .back h1 {
   text-align: center;
   margin: 0 10px;
+  padding: 0;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 3px;
   margin-top: 20px;
 }
 
-.card .back .flex {
+section .back h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--secondary);
+  padding: 0;
+  margin: 0;
+}
+
+section .back .flex {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.card .back a {
+section .back a {
   text-decoration: none;
   cursor: pointer;
 }
 
-.card .back .flex .text {
+section .back .flex .text {
   width: 272px;
   text-align: center;
 }
 
-.card .back .gold-line {
+section .back .gold-line {
   width: 75%;
   height: 3px;
   background-color: var(--accent);
   margin: 7px 0;
 }
 
-.card .back .flex i {
+section .back .flex i {
   font-size: 28px;
   color: var(--accent);
 }
 
-.card .back .link-container {
+section .back .link-container {
   position: absolute;
   bottom: 0;
   background-color: var(--secondary);
@@ -123,7 +133,7 @@
   justify-content: center;
 }
 
-.card .back .link-container:before {
+section .back .link-container:before {
   position: absolute;
   content: "";
   background-color: var(--secondary);
@@ -135,7 +145,7 @@
   right: 0;
 }
 
-.card .back .link-container .link {
+section .back .link-container .link {
   position: absolute;
   bottom: 20px;
   width: 85px;
@@ -145,12 +155,12 @@
   align-items: center;
 }
 
-.card .back .link-container .link i {
+section .back .link-container .link i {
   font-size: 60px;
   color: var(--accent);
 }
 
-.card .back .link-container .text {
+section .back .link-container .text {
   position: absolute;
   bottom: 7px;
   color: var(--accent);
@@ -179,21 +189,21 @@
 }
 
 @media screen and (max-width: 388px) {
-  .card .back .name {
+  section .back .name {
     margin-top: 10px;
   }
 
-  .card .back .gold-line {
+  section .back .gold-line {
     margin: 0;
   }
 }
 
 @media screen and (max-width: 370px) {
-  .card .back .gold-line {
+  section .back .gold-line {
     margin: 7px 0;
   }
 
-  .card .back .flex i {
+  section .back .flex i {
     display: none;
   }
 }
