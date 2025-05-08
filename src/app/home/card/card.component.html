@@ -11,20 +11,14 @@
       <i class="bx bxs-phone"></i>
       <span class="text">{{ enterprise.phoneNumbers }}</span>
     </div>
-    <div class="flex">
-      <i class="bx bxs-envelope"></i>
-      <span class="text">{{ enterprise.email }}</span>
-    </div>
     <a
-      class="link-container"
+      class="flex"
       [href]="'mailto:' + enterprise.email"
       target="_blank"
       title="Contactez-nous"
     >
-      <div class="link">
-        <i class="bx bxs-paper-plane"></i>
-      </div>
-      <span class="text">Contactez-nous</span>
+      <i class="bx bxs-envelope"></i>
+      <span class="text">{{ enterprise.email }}</span>
     </a>
   </div>
 </div>

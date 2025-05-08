@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Enterprise } from '../core/interfaces/enterprise';
-import { enterprise } from '../shared/data/enterprise';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
+import { Enterprise } from '../../core/interfaces/enterprise';
+import { enterprise } from '../../shared/data/enterprise';
 
 @Component({
   selector: 'app-card',

@@ -1,10 +1,7 @@
 :root {
   --primary: white;
-  --secondary: black;
+  --secondary: #252628;
   --accent: #f6e27a;
-  --background: rgb(242, 241, 241);
-  --card-background-front: #252628;
-  --card-background-back: white;
   --box-shadow-color: rgba(0, 0, 0, 0.4);
   --box-shadow: 0 2rem 3rem var(--box-shadow-color);
 
@@ -17,7 +14,7 @@ body {
   height: 100vh;
   height: 100dvh;
   overflow-y: auto;
-  background-color: var(--background);
+  background-color: var(--secondary);
 }
 
 body {
@@ -25,7 +22,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: var(--background);
+  background: var(--secondary);
 }
 
 ::-webkit-scrollbar {
