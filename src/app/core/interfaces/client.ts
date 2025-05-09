@@ -1,4 +1,6 @@
+import { Category } from '../enums/category';
+
 export interface Client {
-  category: string;
+  category: Category;
   types: string[];
 }

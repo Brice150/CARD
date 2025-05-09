@@ -28,3 +28,23 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.toast-container .ngx-toastr.custom {
+  border-radius: var(--light-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.toast-container .ngx-toastr.custom.info {
+  background-color: var(--secondary);
+
+  color: var(--primary);
+  border: 2px solid var(--accent);
+}
+
+.toast-container .ngx-toastr.custom.info .toast-message {
+  color: var(--accent);
+}
+
+.toast-container .ngx-toastr.custom.error {
+  background-color: red;
+}

@@ -1,1 +1,101 @@
-<section></section>
+<section>
+  <div class="title">
+    <i class="bx bxs-hand-right"></i>
+    <h2>Nous vous répondrons sous 48h !</h2>
+  </div>
+  <form [formGroup]="contactForm">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" />
+      @if (contactForm.get('name')!.invalid && (contactForm.get('name')!.dirty
+      || contactForm.get('name')!.touched)) {
+      <mat-error>
+        @if (contactForm.get('name')!.hasError('required')) {
+        <span>Le nom est obligatoire</span>
+        } @if (contactForm.get('name')!.hasError('minlength')) {
+        <span>Le nom est trop court</span>
+        } @if (contactForm.get('name')!.hasError('maxlength')) {
+        <span>Le nom est trop long</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="category" class="cap">
+        @for (category of categories; track $index) {
+        <mat-option [value]="category" class="cap-option">{{
+          category
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      @if (contactForm.get('email')!.invalid && (contactForm.get('email')!.dirty
+      || contactForm.get('email')!.touched)) {
+      <mat-error>
+        @if (contactForm.get('email')!.hasError('required')) {
+        <span>L'email est obligatoire</span>
+        } @if (contactForm.get('email')!.hasError('email')) {
+        <span>L'email est invalide</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Objet</mat-label>
+      <input matInput formControlName="subject" />
+      @if (contactForm.get('subject')!.invalid &&
+      (contactForm.get('subject')!.dirty ||
+      contactForm.get('subject')!.touched)) {
+      <mat-error>
+        @if (contactForm.get('subject')!.hasError('required')) {
+        <span>L'objet est obligatoire</span>
+        } @if (contactForm.get('subject')!.hasError('minlength')) {
+        <span>L'objet est trop court</span>
+        } @if (contactForm.get('subject')!.hasError('maxlength')) {
+        <span>L'objet est trop long</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <textarea matInput formControlName="message"></textarea>
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        title="Envoyer le message"
+        [ngClass]="{ valid: contactForm.valid }"
+        (click)="submitForm(); $event.stopPropagation()"
+      >
+        <mat-icon class="send">send</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        title="Vider le formulaire"
+        (click)="clearForm(); $event.stopPropagation()"
+      >
+        <mat-icon class="delete">delete</mat-icon>
+      </button>
+      @if (contactForm.get('message')!.invalid &&
+      (contactForm.get('message')!.dirty ||
+      contactForm.get('message')!.touched)) {
+      <mat-error>
+        @if (contactForm.get('message')!.hasError('required')) {
+        <span>Le message est obligatoire</span>
+        } @if (contactForm.get('message')!.hasError('minlength')) {
+        <span>Le message est trop court</span>
+        } @if (contactForm.get('message')!.hasError('maxlength')) {
+        <span>Le message est trop long</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+  </form>
+</section>
