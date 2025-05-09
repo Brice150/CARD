@@ -27,6 +27,9 @@ section .title {
   margin-top: 20px;
   flex-wrap: wrap;
   width: 90%;
+  animation: animateElement 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
 }
 
 section .title i {
@@ -55,6 +58,9 @@ section form {
 section form mat-form-field {
   width: 100%;
   margin-bottom: 7px;
+  animation: animateElement 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
 }
 
 section form mat-form-field input {
@@ -73,6 +79,33 @@ section form mat-form-field mat-error {
 
 section form mat-form-field mat-error span {
   font-size: 16px;
+}
+
+button .delete {
+  color: red;
+}
+
+button .send {
+  color: white;
+}
+
+button.valid .send {
+  color: var(--accent);
+}
+
+.cap-option {
+  text-transform: capitalize;
+}
+
+@keyframes animateElement {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 ::ng-deep
@@ -173,22 +206,6 @@ section form mat-form-field mat-error span {
 ::ng-deep mat-form-field.mat-form-field-invalid {
   --primary: red;
   --accent: red;
-}
-
-button .delete {
-  color: red;
-}
-
-button .send {
-  color: white;
-}
-
-button.valid .send {
-  color: var(--accent);
-}
-
-.cap-option {
-  text-transform: capitalize;
 }
 
 @media screen and (max-height: 785px) {

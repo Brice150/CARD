@@ -1,10 +1,10 @@
 <section>
-  <div class="title">
+  <div class="title" style="--delay: 0s">
     <i class="bx bxs-hand-right"></i>
     <h2>Nous vous répondrons sous 48h !</h2>
   </div>
   <form [formGroup]="contactForm">
-    <mat-form-field>
+    <mat-form-field style="--delay: 0.1s">
       <mat-label>Nom</mat-label>
       <input matInput formControlName="name" />
       @if (contactForm.get('name')!.invalid && (contactForm.get('name')!.dirty
@@ -20,7 +20,7 @@
       </mat-error>
       }
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="--delay: 0.2s">
       <mat-label>Catégorie</mat-label>
       <mat-select formControlName="category" class="cap">
         @for (category of categories; track $index) {
@@ -30,7 +30,7 @@
         }
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="--delay: 0.3s">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" />
       @if (contactForm.get('email')!.invalid && (contactForm.get('email')!.dirty
@@ -44,7 +44,7 @@
       </mat-error>
       }
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="--delay: 0.4s">
       <mat-label>Objet</mat-label>
       <input matInput formControlName="subject" />
       @if (contactForm.get('subject')!.invalid &&
@@ -61,7 +61,7 @@
       </mat-error>
       }
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="--delay: 0.5s">
       <mat-label>Message</mat-label>
       <textarea matInput formControlName="message"></textarea>
       <button

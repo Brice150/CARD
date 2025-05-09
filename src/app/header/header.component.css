@@ -29,6 +29,9 @@ nav a {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
+  animation: animateElement 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
 }
 
 nav a i {
@@ -78,4 +81,15 @@ nav a.active .text {
 nav a:hover .text {
   opacity: 1;
   transform: translateY(12px);
+}
+
+@keyframes animateElement {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

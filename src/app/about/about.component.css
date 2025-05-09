@@ -19,6 +19,9 @@ section {
   padding: 20px;
   margin: 10px 0;
   box-sizing: border-box;
+  animation: animateElement 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
 }
 
 section .flex {
@@ -122,4 +125,15 @@ a i {
 a span {
   font-size: 20px;
   font-weight: 500;
+}
+
+@keyframes animateElement {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
