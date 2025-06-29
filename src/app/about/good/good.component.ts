@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Good } from '../../core/interfaces/good';
 import { environment } from '../../../environments/environment';
 
@@ -10,6 +10,6 @@ import { environment } from '../../../environments/environment';
   styleUrl: './good.component.css',
 })
 export class GoodComponent {
-  @Input() good!: Good;
+  readonly good = input.required<Good>();
   imagePath: string = environment.imagePath + 'goods/';
 }

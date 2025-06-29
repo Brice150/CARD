@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Client } from '../../../core/interfaces/client';
 
@@ -10,5 +10,5 @@ import { Client } from '../../../core/interfaces/client';
   styleUrl: './client.component.css',
 })
 export class ClientComponent {
-  @Input() client!: Client;
+  readonly client = input.required<Client>();
 }
