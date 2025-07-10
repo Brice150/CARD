@@ -5,10 +5,11 @@
     <li>{{ type }}</li>
     }
   </ul>
-  <a
+  <button
     [routerLink]="'/contact/' + client().category"
     [title]="'Je suis un ' + client().category"
+    type="button"
   >
     <span>Je suis un {{ client().category }}</span>
-  </a>
+  </button>
 </section>
