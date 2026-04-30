@@ -2,7 +2,7 @@
 <img height="130px" width="130px" src="./src/assets/images/Logo.webp">
 </div>
   
-# CARD, an enterprise web site with a flipping visit card
+# CARD, un site web d’entreprise avec une carte de visite interactive
 
 Frontend : Angular
 <br>
