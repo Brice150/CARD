@@ -8,38 +8,44 @@ Frontend : Angular
 <br>
 
 <details>
-  <summary>Pages Features</summary>
+  <summary>Features</summary>
 
-### Home
+### 🏠 Accueil
 
-- View a flipping visit card in a home page
+- Visualisation d’une carte de visite animée (effet flip) sur la page d’accueil
 
-### A Propos
+---
 
-- View informations about the compagny
+### ℹ️ À propos
 
-### Contact
+- Consultation des informations sur l’entreprise
 
-- View a contact form with validators
+---
+
+### 📬 Contact
+
+- Accès à un formulaire de contact avec validation des champs
+
+---
 
 </details>
 
 <details>
-  <summary>Run Locally</summary>
+  <summary>Installation locale</summary>
 
-### Clone the project
+### Cloner le projet
 
 ```bash
-  git clone https://github.com/Brice150/CARD.git
+  git clone https://github.com/Brice150/Life-Rise.git
 ```
 
-### Install dependencies
+### Installer les dépendances
 
 ```bash
   npm install
 ```
 
-### Start the server
+### Lancer l'application
 
 ```bash
   ng serve -o
