@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcard=self.webpackChunkcard||[]).push([[76],{5589(r,c,n){n.d(c,{b:()=>u});var u=function(e){return e.PARTICULIER="particulier",e.PROFESSIONNEL="professionnel",e}(u||{})}}]);
