@@ -1,6 +1,6 @@
 <section style="--delay: 0s">
   <div class="title">
-    <i class="bx bxs-briefcase-alt"></i>
+    <i class="bx bxs-briefcase-alt" aria-hidden="true"></i>
     <h2>Société & Gérants</h2>
   </div>
   <p class="first">
@@ -18,18 +18,18 @@
 </section>
 <section style="--delay: 0.2s">
   <div class="title">
-    <i class="bx bxs-building-house"></i>
+    <i class="bx bxs-building-house" aria-hidden="true"></i>
     <h2>Biens Ciblés</h2>
   </div>
   <div class="flex">
-    @for (good of goods; track $index) {
+    @for (good of goods; track good.name) {
     <app-good [good]="good"></app-good>
     }
   </div>
 </section>
 <section style="--delay: 0.4s">
   <div class="title">
-    <i class="bx bxs-donate-heart"></i>
+    <i class="bx bxs-donate-heart" aria-hidden="true"></i>
     <h2>Nos Valeurs</h2>
   </div>
   <ul>

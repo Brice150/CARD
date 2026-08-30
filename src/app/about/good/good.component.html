@@ -1,4 +1,11 @@
 <section>
   <h3>{{ good().name }}</h3>
-  <img [src]="imagePath + good().image" [alt]="good().name" />
+  <img
+    [src]="imagePath + good().image"
+    [alt]="good().name"
+    width="200"
+    height="150"
+    loading="lazy"
+    decoding="async"
+  />
 </section>

@@ -13,7 +13,7 @@ export class SmartPreloading implements PreloadingStrategy {
   private static readonly DELAY_MS = 1500;
 
   preload(route: Route, load: () => Observable<unknown>): Observable<unknown> {
-    if (route.data?.['preload'] === false) return EMPTY;
+    if (route.data?.['preload'] !== true) return EMPTY;
 
     return timer(SmartPreloading.DELAY_MS).pipe(
       switchMap(() => (this.connection.shouldPreload() ? load() : EMPTY)),

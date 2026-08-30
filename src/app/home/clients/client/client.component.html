@@ -1,15 +1,14 @@
 <section>
   <h3>{{ client().category }}</h3>
   <ul>
-    @for (type of client().types; track $index) {
+    @for (type of client().types; track type) {
     <li>{{ type }}</li>
     }
   </ul>
-  <button
-    [routerLink]="'/contact/' + client().category"
+  <a
+    [routerLink]="['/contact', client().category]"
     [title]="'Je suis un ' + client().category"
-    type="button"
   >
     <span>Je suis un {{ client().category }}</span>
-  </button>
+  </a>
 </section>

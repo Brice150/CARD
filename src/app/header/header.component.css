@@ -18,7 +18,7 @@ nav {
   box-shadow: var(--box-shadow);
 }
 
-nav button {
+nav a {
   position: relative;
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ nav button {
   background-color: var(--background);
 }
 
-nav button i {
+nav a i {
   position: relative;
   display: flex;
   justify-content: center;
@@ -50,21 +50,21 @@ nav button i {
   color: var(--accent);
 }
 
-nav button.active i {
+nav a.active i {
   transform: translateY(-30px);
   background-color: var(--accent);
   color: var(--secondary);
   box-shadow: var(--box-shadow-active);
 }
 
-nav button:hover i {
+nav a:hover i {
   transform: translateY(-30px);
   background-color: var(--accent);
   color: var(--secondary);
   box-shadow: var(--box-shadow-active);
 }
 
-nav button .text {
+nav a .text {
   position: absolute;
   color: var(--accent);
   font-weight: 600;
@@ -76,12 +76,12 @@ nav button .text {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-nav button.active .text {
+nav a.active .text {
   opacity: 1;
   transform: translateY(12px);
 }
 
-nav button:hover .text {
+nav a:hover .text {
   opacity: 1;
   transform: translateY(12px);
 }

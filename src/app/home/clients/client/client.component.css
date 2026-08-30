@@ -29,7 +29,8 @@ section ul li {
   margin: 5px 0;
 }
 
-section button {
+section a {
+  text-decoration: none;
   padding: 12px;
   color: var(--accent);
   border: none;
@@ -41,7 +42,7 @@ section button {
   cursor: pointer;
 }
 
-section button span {
+section a span {
   font-size: 20px;
   font-weight: 500;
   color: var(--accent);
@@ -49,10 +50,10 @@ section button span {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-section button:hover {
+section a:hover {
   background-color: var(--accent);
 }
 
-section button:hover span {
+section a:hover span {
   color: var(--secondary);
 }

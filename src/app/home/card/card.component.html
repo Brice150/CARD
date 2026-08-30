@@ -1,6 +1,12 @@
 <section>
   <div class="front">
-    <img [src]="imagePath + 'Logo.webp'" alt="Logo" />
+    <img
+      [src]="imagePath + 'Logo.webp'"
+      alt="Logo SCI Lecomte Investments"
+      width="100"
+      height="100"
+      decoding="async"
+    />
     <h1>{{ enterprise.titleFront }}</h1>
   </div>
   <div class="back">
@@ -8,16 +14,15 @@
     <h2>{{ enterprise.subtitleBack }}</h2>
     <div class="gold-line"></div>
     <div class="flex">
-      <i class="bx bxs-phone"></i>
+      <i class="bx bxs-phone" aria-hidden="true"></i>
       <span class="text">{{ enterprise.phoneNumbers }}</span>
     </div>
     <a
       class="flex"
       [href]="'mailto:' + enterprise.email"
-      target="_blank"
       title="Contactez-nous"
     >
-      <i class="bx bxs-envelope"></i>
+      <i class="bx bxs-envelope" aria-hidden="true"></i>
       <span class="text">{{ enterprise.email }}</span>
     </a>
   </div>

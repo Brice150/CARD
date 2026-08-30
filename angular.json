@@ -22,6 +22,9 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
+              "src/llm.txt",
               "src/assets"
             ],
             "styles": [
@@ -36,16 +39,17 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "4mb"
+                  "maximumWarning": "900kb",
+                  "maximumError": "1.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2mb",
-                  "maximumError": "4mb"
+                  "maximumWarning": "8kb",
+                  "maximumError": "16kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "https://Brice150.github.io/CARD/"
             },
             "development": {
               "optimization": false,
@@ -80,6 +84,9 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
+              "src/llm.txt",
               "src/assets"
             ],
             "styles": [

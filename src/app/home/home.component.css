@@ -7,7 +7,8 @@
   margin-top: 20px;
 }
 
-button {
+a {
+  text-decoration: none;
   margin: 20px 0;
   display: flex;
   justify-content: center;
@@ -26,16 +27,16 @@ button {
   background-color: var(--background);
 }
 
-button:hover {
+a:hover {
   background-color: var(--accent);
   color: var(--secondary);
 }
 
-button i {
+a i {
   font-size: 30px;
 }
 
-button span {
+a span {
   font-size: 20px;
   font-weight: 500;
   font-family: Roboto, "Helvetica Neue", sans-serif;

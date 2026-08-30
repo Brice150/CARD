@@ -1,6 +1,7 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import {
   provideRouter,
+  withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
 } from '@angular/router';
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       }),
       withPreloading(SmartPreloading),
+      withComponentInputBinding(),
     ),
     provideToastr(),
     provideAnimationsAsync(),

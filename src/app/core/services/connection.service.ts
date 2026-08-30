@@ -1,6 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  DestroyRef,
+  inject,
+  Injectable,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
 
 interface NetworkInformation extends EventTarget {
   effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
@@ -18,22 +23,19 @@ interface NavigatorWithConnection extends Navigator {
 export class ConnectionService {
   private static readonly MIN_DOWNLINK_MBPS = 1.5;
 
-  private readonly canPreload = new BehaviorSubject<boolean>(true);
-  readonly canPreload$ = this.canPreload.asObservable();
-
-  private platformId = inject(PLATFORM_ID);
-  private isBrowser = isPlatformBrowser(this.platformId);
+  private readonly canPreload = signal(true);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   constructor() {
     if (!this.isBrowser) return;
 
-    const nav = navigator as NavigatorWithConnection;
-    const connection = nav.connection;
+    const connection = (navigator as NavigatorWithConnection).connection;
 
     if (!connection) return;
 
     const update = (): void => {
-      this.canPreload.next(
+      this.canPreload.set(
         !connection.saveData &&
           connection.effectiveType === '4g' &&
           connection.downlink >= ConnectionService.MIN_DOWNLINK_MBPS,
@@ -42,9 +44,12 @@ export class ConnectionService {
 
     update();
     connection.addEventListener('change', update);
+    this.destroyRef.onDestroy(() =>
+      connection.removeEventListener('change', update),
+    );
   }
 
   shouldPreload(): boolean {
-    return this.canPreload.value;
+    return this.canPreload();
   }
 }
