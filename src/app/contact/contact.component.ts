@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Component, DestroyRef, computed, effect, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  computed,
+  effect,
+  inject,
+  input,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +31,7 @@ import { Category } from '../core/enums/category';
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
   private readonly fb = inject(FormBuilder);

@@ -7,59 +7,69 @@
     <mat-form-field style="--delay: 0.1s">
       <mat-label>Nom</mat-label>
       <input matInput formControlName="name" autocomplete="name" />
-      @if (contactForm.controls.name.invalid &&
-      (contactForm.controls.name.dirty || contactForm.controls.name.touched)) {
-      <mat-error>
-        @if (contactForm.controls.name.hasError('required')) {
-        <span>Le nom est obligatoire</span>
-        } @if (contactForm.controls.name.hasError('minlength')) {
-        <span>Le nom est trop court</span>
-        } @if (contactForm.controls.name.hasError('maxlength')) {
-        <span>Le nom est trop long</span>
-        }
-      </mat-error>
+      @if (
+        contactForm.controls.name.invalid &&
+        (contactForm.controls.name.dirty || contactForm.controls.name.touched)
+      ) {
+        <mat-error>
+          @if (contactForm.controls.name.hasError('required')) {
+            <span>Le nom est obligatoire</span>
+          }
+          @if (contactForm.controls.name.hasError('minlength')) {
+            <span>Le nom est trop court</span>
+          }
+          @if (contactForm.controls.name.hasError('maxlength')) {
+            <span>Le nom est trop long</span>
+          }
+        </mat-error>
       }
     </mat-form-field>
     <mat-form-field style="--delay: 0.2s">
       <mat-label>Catégorie</mat-label>
       <mat-select formControlName="category" class="cap">
         @for (category of categories; track category) {
-        <mat-option [value]="category" class="cap-option">{{
-          category
-        }}</mat-option>
+          <mat-option [value]="category" class="cap-option">{{
+            category
+          }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field style="--delay: 0.3s">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" autocomplete="email" />
-      @if (contactForm.controls.email.invalid &&
-      (contactForm.controls.email.dirty || contactForm.controls.email.touched))
-      {
-      <mat-error>
-        @if (contactForm.controls.email.hasError('required')) {
-        <span>L'email est obligatoire</span>
-        } @if (contactForm.controls.email.hasError('email')) {
-        <span>L'email est invalide</span>
-        }
-      </mat-error>
+      @if (
+        contactForm.controls.email.invalid &&
+        (contactForm.controls.email.dirty || contactForm.controls.email.touched)
+      ) {
+        <mat-error>
+          @if (contactForm.controls.email.hasError('required')) {
+            <span>L'email est obligatoire</span>
+          }
+          @if (contactForm.controls.email.hasError('email')) {
+            <span>L'email est invalide</span>
+          }
+        </mat-error>
       }
     </mat-form-field>
     <mat-form-field style="--delay: 0.4s">
       <mat-label>Objet</mat-label>
       <input matInput formControlName="subject" />
-      @if (contactForm.controls.subject.invalid &&
-      (contactForm.controls.subject.dirty ||
-      contactForm.controls.subject.touched)) {
-      <mat-error>
-        @if (contactForm.controls.subject.hasError('required')) {
-        <span>L'objet est obligatoire</span>
-        } @if (contactForm.controls.subject.hasError('minlength')) {
-        <span>L'objet est trop court</span>
-        } @if (contactForm.controls.subject.hasError('maxlength')) {
-        <span>L'objet est trop long</span>
-        }
-      </mat-error>
+      @if (
+        contactForm.controls.subject.invalid &&
+        (contactForm.controls.subject.dirty ||
+          contactForm.controls.subject.touched)
+      ) {
+        <mat-error>
+          @if (contactForm.controls.subject.hasError('required')) {
+            <span>L'objet est obligatoire</span>
+          }
+          @if (contactForm.controls.subject.hasError('minlength')) {
+            <span>L'objet est trop court</span>
+          }
+          @if (contactForm.controls.subject.hasError('maxlength')) {
+            <span>L'objet est trop long</span>
+          }
+        </mat-error>
       }
     </mat-form-field>
     <mat-form-field style="--delay: 0.5s">
@@ -83,18 +93,22 @@
       >
         <mat-icon class="delete">delete</mat-icon>
       </button>
-      @if (contactForm.controls.message.invalid &&
-      (contactForm.controls.message.dirty ||
-      contactForm.controls.message.touched)) {
-      <mat-error>
-        @if (contactForm.controls.message.hasError('required')) {
-        <span>Le message est obligatoire</span>
-        } @if (contactForm.controls.message.hasError('minlength')) {
-        <span>Le message est trop court</span>
-        } @if (contactForm.controls.message.hasError('maxlength')) {
-        <span>Le message est trop long</span>
-        }
-      </mat-error>
+      @if (
+        contactForm.controls.message.invalid &&
+        (contactForm.controls.message.dirty ||
+          contactForm.controls.message.touched)
+      ) {
+        <mat-error>
+          @if (contactForm.controls.message.hasError('required')) {
+            <span>Le message est obligatoire</span>
+          }
+          @if (contactForm.controls.message.hasError('minlength')) {
+            <span>Le message est trop court</span>
+          }
+          @if (contactForm.controls.message.hasError('maxlength')) {
+            <span>Le message est trop long</span>
+          }
+        </mat-error>
       }
     </mat-form-field>
   </form>

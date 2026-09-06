@@ -135,7 +135,7 @@ section .back .link-container {
 
 section .back .link-container:before {
   position: absolute;
-  content: "";
+  content: '';
   background-color: var(--secondary);
   height: 95px;
   width: 95px;

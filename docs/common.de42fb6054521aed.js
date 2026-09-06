@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcard=self.webpackChunkcard||[]).push([[76],{5312:(t,n,s)=>{s.d(n,{c:()=>e});const e={production:!1,imagePath:"./assets/images/",contactEndpoint:"https://formspree.io/f/xwpoqver"}},5589:(t,n,s)=>{s.d(n,{b:()=>e});var e=function(c){return c.PARTICULIER="particulier",c.PROFESSIONNEL="professionnel",c}(e||{})}}]);

@@ -1,0 +1,5 @@
+# Generated or vendored: formatting it would produce a diff nobody wrote.
+/docs
+/.angular
+**/node_modules
+package-lock.json

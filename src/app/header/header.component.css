@@ -73,7 +73,7 @@ nav a .text {
   transition: 0.5s ease;
   opacity: 0;
   transform: translateY(15px);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 nav a.active .text {
