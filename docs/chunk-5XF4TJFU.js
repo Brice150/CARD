@@ -1,0 +1,1 @@
+var e={titleFront:"SCI LECOMTE INVESTMENTS",titleBack:"BRICE & PIERRE LECOMTE",subtitleBack:"Associ\xE9s et g\xE9rants de la SCI",phoneNumbers:"06 30 84 63 97 | 06 59 11 62 67",email:"lecomte.investments@gmail.com"};export{e as a};
