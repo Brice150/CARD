@@ -1,115 +1,147 @@
-<section>
-  <div class="title" style="--delay: 0s">
-    <i class="bx bxs-hand-right" aria-hidden="true"></i>
-    <h2>Nous vous répondrons sous 48h !</h2>
-  </div>
-  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
-    <mat-form-field style="--delay: 0.1s">
-      <mat-label>Nom</mat-label>
-      <input matInput formControlName="name" autocomplete="name" />
-      @if (
-        contactForm.controls.name.invalid &&
-        (contactForm.controls.name.dirty || contactForm.controls.name.touched)
-      ) {
-        <mat-error>
-          @if (contactForm.controls.name.hasError('required')) {
-            <span>Le nom est obligatoire</span>
-          }
-          @if (contactForm.controls.name.hasError('minlength')) {
-            <span>Le nom est trop court</span>
-          }
-          @if (contactForm.controls.name.hasError('maxlength')) {
-            <span>Le nom est trop long</span>
-          }
-        </mat-error>
+<header class="page-head reveal" style="--delay: 0s">
+  <p class="eyebrow">Contact</p>
+  <h1 class="display">Parlons de <em>votre projet</em>.</h1>
+</header>
+
+<div class="layout">
+  <aside class="info reveal" style="--delay: 0.1s">
+    <div class="promise">
+      <i class="bx bxs-time-five" aria-hidden="true"></i>
+      <div>
+        <h2>Nous vous répondrons sous 48h !</h2>
+        <p>Locataire, acheteur, vendeur ou professionnel, écrivez-nous.</p>
+      </div>
+    </div>
+    <ul>
+      @for (phone of phones; track phone) {
+        <li>
+          <i class="bx bxs-phone" aria-hidden="true"></i>
+          <a [href]="'tel:+33' + phone.replaceAll(' ', '').slice(1)">{{
+            phone
+          }}</a>
+        </li>
       }
-    </mat-form-field>
-    <mat-form-field style="--delay: 0.2s">
-      <mat-label>Catégorie</mat-label>
-      <mat-select formControlName="category" class="cap">
-        @for (category of categories; track category) {
-          <mat-option [value]="category" class="cap-option">{{
-            category
-          }}</mat-option>
+      <li>
+        <i class="bx bxs-envelope" aria-hidden="true"></i>
+        <a [href]="'mailto:' + enterprise.email">{{ enterprise.email }}</a>
+      </li>
+      <li>
+        <i class="bx bxs-map" aria-hidden="true"></i>
+        <span>Caen, Normandie</span>
+      </li>
+    </ul>
+  </aside>
+
+  <section class="reveal" style="--delay: 0.2s">
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name" autocomplete="name" />
+          @if (
+            contactForm.controls.name.invalid &&
+            (contactForm.controls.name.dirty ||
+              contactForm.controls.name.touched)
+          ) {
+            <mat-error>
+              @if (contactForm.controls.name.hasError('required')) {
+                <span>Le nom est obligatoire</span>
+              }
+              @if (contactForm.controls.name.hasError('minlength')) {
+                <span>Le nom est trop court</span>
+              }
+              @if (contactForm.controls.name.hasError('maxlength')) {
+                <span>Le nom est trop long</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Catégorie</mat-label>
+          <mat-select formControlName="category" class="cap">
+            @for (category of categories; track category) {
+              <mat-option [value]="category" class="cap-option">{{
+                category
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" autocomplete="email" />
+        @if (
+          contactForm.controls.email.invalid &&
+          (contactForm.controls.email.dirty ||
+            contactForm.controls.email.touched)
+        ) {
+          <mat-error>
+            @if (contactForm.controls.email.hasError('required')) {
+              <span>L'email est obligatoire</span>
+            }
+            @if (contactForm.controls.email.hasError('email')) {
+              <span>L'email est invalide</span>
+            }
+          </mat-error>
         }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field style="--delay: 0.3s">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" autocomplete="email" />
-      @if (
-        contactForm.controls.email.invalid &&
-        (contactForm.controls.email.dirty || contactForm.controls.email.touched)
-      ) {
-        <mat-error>
-          @if (contactForm.controls.email.hasError('required')) {
-            <span>L'email est obligatoire</span>
-          }
-          @if (contactForm.controls.email.hasError('email')) {
-            <span>L'email est invalide</span>
-          }
-        </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field style="--delay: 0.4s">
-      <mat-label>Objet</mat-label>
-      <input matInput formControlName="subject" />
-      @if (
-        contactForm.controls.subject.invalid &&
-        (contactForm.controls.subject.dirty ||
-          contactForm.controls.subject.touched)
-      ) {
-        <mat-error>
-          @if (contactForm.controls.subject.hasError('required')) {
-            <span>L'objet est obligatoire</span>
-          }
-          @if (contactForm.controls.subject.hasError('minlength')) {
-            <span>L'objet est trop court</span>
-          }
-          @if (contactForm.controls.subject.hasError('maxlength')) {
-            <span>L'objet est trop long</span>
-          }
-        </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field style="--delay: 0.5s">
-      <mat-label>Message</mat-label>
-      <textarea matInput formControlName="message"></textarea>
-      <button
-        mat-icon-button
-        matSuffix
-        type="submit"
-        title="Envoyer le message"
-        [class.valid]="contactForm.valid"
-      >
-        <mat-icon class="send">send</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        matSuffix
-        type="button"
-        title="Vider le formulaire"
-        (click)="clearForm(); $event.stopPropagation()"
-      >
-        <mat-icon class="delete">delete</mat-icon>
-      </button>
-      @if (
-        contactForm.controls.message.invalid &&
-        (contactForm.controls.message.dirty ||
-          contactForm.controls.message.touched)
-      ) {
-        <mat-error>
-          @if (contactForm.controls.message.hasError('required')) {
-            <span>Le message est obligatoire</span>
-          }
-          @if (contactForm.controls.message.hasError('minlength')) {
-            <span>Le message est trop court</span>
-          }
-          @if (contactForm.controls.message.hasError('maxlength')) {
-            <span>Le message est trop long</span>
-          }
-        </mat-error>
-      }
-    </mat-form-field>
-  </form>
-</section>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Objet</mat-label>
+        <input matInput formControlName="subject" />
+        @if (
+          contactForm.controls.subject.invalid &&
+          (contactForm.controls.subject.dirty ||
+            contactForm.controls.subject.touched)
+        ) {
+          <mat-error>
+            @if (contactForm.controls.subject.hasError('required')) {
+              <span>L'objet est obligatoire</span>
+            }
+            @if (contactForm.controls.subject.hasError('minlength')) {
+              <span>L'objet est trop court</span>
+            }
+            @if (contactForm.controls.subject.hasError('maxlength')) {
+              <span>L'objet est trop long</span>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message"></textarea>
+        @if (
+          contactForm.controls.message.invalid &&
+          (contactForm.controls.message.dirty ||
+            contactForm.controls.message.touched)
+        ) {
+          <mat-error>
+            @if (contactForm.controls.message.hasError('required')) {
+              <span>Le message est obligatoire</span>
+            }
+            @if (contactForm.controls.message.hasError('minlength')) {
+              <span>Le message est trop court</span>
+            }
+            @if (contactForm.controls.message.hasError('maxlength')) {
+              <span>Le message est trop long</span>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      <div class="actions">
+        <button
+          class="btn btn-ghost"
+          type="button"
+          title="Vider le formulaire"
+          (click)="clearForm()"
+        >
+          <i class="bx bx-reset" aria-hidden="true"></i>
+          <span>Effacer</span>
+        </button>
+        <button class="btn btn-gold" type="submit" title="Envoyer le message">
+          <span>Envoyer le message</span>
+          <i class="bx bxs-send" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </section>
+</div>

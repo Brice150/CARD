@@ -1,186 +1,192 @@
 :host {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  perspective: 1400px;
+}
+
+/* Halo doré discret sous la carte */
+.stage::before {
+  content: '';
+  position: absolute;
+  inset: 15% 10% -10%;
+  background: radial-gradient(
+    closest-side,
+    rgba(246, 226, 122, 0.22),
+    transparent
+  );
+  filter: blur(30px);
+  z-index: -1;
 }
 
 section {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 230px;
-  max-width: 400px;
-  width: 95%;
-  margin: 10px 0;
-  perspective: 800px;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--light-radius);
+  width: 100%;
+  aspect-ratio: 85 / 55;
   transform-style: preserve-3d;
-  animation: rotateCardWithPause 6s infinite ease-in-out;
+  animation: rotateCardWithPause 9s infinite ease-in-out;
 }
 
 section:hover {
   animation-play-state: paused;
 }
 
-section span {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--secondary);
-}
-
-section .front,
-section .back {
+.front,
+.back {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  inset: 0;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   overflow: hidden;
-  border-radius: var(--light-radius);
+  border-radius: 14px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-section .front {
+/* Recto */
+.front {
   justify-content: center;
-  gap: 30px;
-  background-color: var(--secondary);
+  gap: 14px;
+  background:
+    radial-gradient(
+      120% 90% at 50% 0%,
+      rgba(246, 226, 122, 0.1),
+      transparent 60%
+    ),
+    var(--secondary);
 }
 
-section .front img {
-  width: 100px;
-  height: 100px;
+.front::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--line-gold);
+  border-radius: 8px;
+  pointer-events: none;
 }
 
-section .front h1 {
+.front img {
+  width: clamp(64px, 20%, 96px);
+  height: auto;
+}
+
+.front h2 {
+  margin: 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 4.6vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-align: center;
-  margin: 0 10px;
-  padding: 0;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 3px;
   color: var(--accent);
 }
 
-section .back {
-  gap: 15px;
-  background-color: var(--primary);
+.front .tagline {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Verso */
+.back {
+  justify-content: flex-start;
+  background: #ffffff;
+  color: var(--text-dark);
   transform: rotateY(180deg);
 }
 
-section .back h1 {
+.back .head {
+  margin-top: 9%;
   text-align: center;
-  margin: 0 10px;
-  padding: 0;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  margin-top: 20px;
 }
 
-section .back h2 {
-  font-size: 18px;
-  font-weight: 500;
+.back h2 {
+  margin: 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 4.6vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--secondary);
-  padding: 0;
-  margin: 0;
 }
 
-section .back .flex {
+.back .head p {
+  margin: 2px 0 0;
+  font-size: clamp(11px, 2.6vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #6a6b6e;
+}
+
+.back .gold-line {
+  width: 60%;
+  height: 2px;
+  margin: 5% 0;
+  background: var(--gold-gradient);
+}
+
+.back .details {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.back .flex {
+  display: flex;
   align-items: center;
   gap: 10px;
-}
-
-section .back a {
+  font-size: clamp(12px, 3vw, 15px);
+  font-weight: 500;
+  color: var(--secondary);
   text-decoration: none;
-  cursor: pointer;
 }
 
-section .back .flex .text {
-  width: 272px;
-  text-align: center;
+.back a.flex:hover .text {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-strong);
+  text-underline-offset: 4px;
 }
 
-section .back .gold-line {
-  width: 75%;
-  height: 3px;
-  background-color: var(--accent);
-  margin: 7px 0;
+.back .flex i {
+  font-size: 18px;
+  color: var(--accent-strong);
 }
 
-section .back .flex i {
-  font-size: 28px;
-  color: var(--accent);
-}
-
-section .back .link-container {
+.back .band {
   position: absolute;
-  bottom: 0;
-  background-color: var(--secondary);
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-section .back .link-container:before {
-  position: absolute;
-  content: '';
-  background-color: var(--secondary);
-  height: 95px;
-  width: 95px;
-  margin: auto;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-section .back .link-container .link {
-  position: absolute;
-  bottom: 20px;
-  width: 85px;
-  height: 85px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 16%;
+  background: var(--secondary);
 }
 
-section .back .link-container .link i {
-  font-size: 60px;
-  color: var(--accent);
-}
-
-section .back .link-container .text {
-  position: absolute;
-  bottom: 7px;
-  color: var(--accent);
-  text-align: center;
-  font-size: 22px;
-  letter-spacing: 2px;
-  z-index: 10;
+.back .band img {
+  width: auto;
+  height: 60%;
 }
 
 @keyframes rotateCardWithPause {
-  0% {
+  0%,
+  35% {
     transform: rotateY(0deg);
   }
-  25% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(180deg);
-  }
-  75% {
+  50%,
+  85% {
     transform: rotateY(180deg);
   }
   100% {
@@ -188,22 +194,18 @@ section .back .link-container .text {
   }
 }
 
-@media screen and (max-width: 388px) {
-  section .back .name {
-    margin-top: 10px;
-  }
-
-  section .back .gold-line {
-    margin: 0;
+@media screen and (max-width: 380px) {
+  .back .flex i {
+    display: none;
   }
 }
 
-@media screen and (max-width: 370px) {
-  section .back .gold-line {
-    margin: 7px 0;
+@media (prefers-reduced-motion: reduce) {
+  section {
+    animation: none;
   }
 
-  section .back .flex i {
-    display: none;
+  section:hover {
+    transform: rotateY(180deg);
   }
 }

@@ -1,14 +1,26 @@
 <section>
+  <div class="icon" aria-hidden="true">
+    <i
+      class="bx"
+      [class.bxs-user]="client().category === 'particulier'"
+      [class.bxs-briefcase]="client().category !== 'particulier'"
+    ></i>
+  </div>
   <h3>{{ client().category }}</h3>
   <ul>
     @for (type of client().types; track type) {
-      <li>{{ type }}</li>
+      <li>
+        <i class="bx bx-check" aria-hidden="true"></i>
+        {{ type }}
+      </li>
     }
   </ul>
   <a
+    class="btn btn-ghost"
     [routerLink]="['/contact', client().category]"
     [title]="'Je suis un ' + client().category"
   >
     <span>Je suis un {{ client().category }}</span>
+    <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
   </a>
 </section>

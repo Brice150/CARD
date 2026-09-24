@@ -10,14 +10,14 @@ import {
   input,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../environments/environment';
 import { Category } from '../core/enums/category';
+import { Enterprise } from '../core/interfaces/enterprise';
+import { enterprise } from '../shared/data/enterprise';
 
 @Component({
   selector: 'app-contact',
@@ -25,8 +25,6 @@ import { Category } from '../core/enums/category';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
-    MatIconModule,
     MatSelectModule,
   ],
   templateUrl: './contact.component.html',
@@ -43,6 +41,11 @@ export class ContactComponent {
   readonly category = input<string>();
 
   readonly categories: Category[] = Object.values(Category);
+
+  readonly enterprise: Enterprise = enterprise;
+  readonly phones: string[] = enterprise.phoneNumbers
+    .split('|')
+    .map((phone) => phone.trim());
 
   /** Ignores any category in the URL that is not one we actually offer. */
   private readonly selectedCategory = computed(() => {

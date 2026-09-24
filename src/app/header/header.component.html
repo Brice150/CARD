@@ -1,29 +1,44 @@
-<nav>
-  <a
-    routerLink="/home"
-    routerLinkActive="active"
-    title="Accueil"
-    style="--delay: 0s"
-  >
-    <span class="text">Accueil</span>
-    <i class="bx bxs-home" aria-hidden="true"></i>
+<header>
+  <a class="brand" routerLink="/home" title="Accueil">
+    <img
+      [src]="imagePath + 'Logo.webp'"
+      alt=""
+      width="40"
+      height="40"
+      decoding="async"
+    />
+    <span class="brand-text">
+      <strong>Lecomte</strong>
+      <small>Investments</small>
+    </span>
   </a>
-  <a
-    routerLink="/about"
-    routerLinkActive="active"
-    title="À Propos"
-    style="--delay: 0.2s"
-  >
-    <span class="text">À Propos</span>
-    <i class="bx bxs-building-house" aria-hidden="true"></i>
-  </a>
-  <a
-    routerLink="/contact"
-    routerLinkActive="active"
-    title="Contact"
-    style="--delay: 0.4s"
-  >
-    <span class="text">Contact</span>
-    <i class="bx bxs-envelope" aria-hidden="true"></i>
-  </a>
-</nav>
+  <nav aria-label="Navigation principale">
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      title="Accueil"
+    >
+      <i class="bx bxs-home" aria-hidden="true"></i>
+      <span>Accueil</span>
+    </a>
+    <a
+      routerLink="/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      title="À Propos"
+    >
+      <i class="bx bxs-building-house" aria-hidden="true"></i>
+      <span>À propos</span>
+    </a>
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      title="Contact"
+    >
+      <i class="bx bxs-envelope" aria-hidden="true"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+</header>

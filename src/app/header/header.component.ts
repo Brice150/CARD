@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  readonly imagePath = environment.imagePath;
+}

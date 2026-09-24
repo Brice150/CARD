@@ -1,6 +1,28 @@
-<app-card style="--delay: 0s"></app-card>
-<app-clients style="--delay: 0.2s"></app-clients>
-<a routerLink="/contact" title="Contactez-nous" style="--delay: 0.4s">
-  <i class="bx bxs-envelope" aria-hidden="true"></i>
-  <span>Contactez-nous</span>
-</a>
+<section class="hero">
+  <div class="intro">
+    <p class="eyebrow reveal" style="--delay: 0s">
+      Société civile immobilière · Caen
+    </p>
+    <h1 class="display reveal" style="--delay: 0.1s">
+      Bâtir un patrimoine <em>solide</em> et <em>durable</em>.
+    </h1>
+    <p class="lead reveal" style="--delay: 0.2s">
+      SCI familiale fondée par Brice et Pierre Lecomte, nous investissons dans
+      des parkings, immeubles, maisons et appartements en Normandie, avec une
+      gestion transparente et une vision à long terme.
+    </p>
+    <div class="actions reveal" style="--delay: 0.3s">
+      <a class="btn btn-gold" routerLink="/contact" title="Contactez-nous">
+        <i class="bx bxs-envelope" aria-hidden="true"></i>
+        <span>Contactez-nous</span>
+      </a>
+      <a class="btn btn-ghost" routerLink="/about" title="Découvrir la SCI">
+        <span>Découvrir la SCI</span>
+        <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <app-card class="reveal" style="--delay: 0.2s"></app-card>
+</section>
+
+<app-clients class="reveal" style="--delay: 0.4s"></app-clients>

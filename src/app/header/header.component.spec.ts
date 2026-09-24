@@ -6,7 +6,7 @@ describe('HeaderComponent', () => {
     const fixture = await mount(HeaderComponent);
 
     const links: string[] = Array.from(
-      fixture.nativeElement.querySelectorAll('a[routerLink]'),
+      fixture.nativeElement.querySelectorAll('nav a[routerLink]'),
     ).map((link) => (link as HTMLAnchorElement).getAttribute('routerLink')!);
 
     expect(links).toEqual(['/home', '/about', '/contact']);

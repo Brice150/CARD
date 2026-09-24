@@ -1,59 +1,105 @@
-<section style="--delay: 0s">
-  <div class="title">
-    <i class="bx bxs-briefcase-alt" aria-hidden="true"></i>
-    <h2>Société & Gérants</h2>
+<header class="page-head reveal" style="--delay: 0s">
+  <p class="eyebrow">À propos</p>
+  <h1 class="display">Une SCI familiale, <em>une vision commune</em>.</h1>
+</header>
+
+<section class="company reveal" style="--delay: 0.1s">
+  <div class="story">
+    <div class="title">
+      <i class="bx bxs-briefcase-alt" aria-hidden="true"></i>
+      <h2>Société & Gérants</h2>
+    </div>
+    <p>
+      Fondée le 11 janvier 2024, <span>LECOMTE INVESTMENTS</span> est une
+      société civile immobilière familiale inscrite au R.C.S de Caen sous le
+      SIRET 983 377 037 00012. Cette société reflète notre ambition commune de
+      bâtir un patrimoine immobilier solide et durable.
+    </p>
+    <p>
+      La SCI est dirigée par <span>Brice et Pierre Lecomte</span>, deux associés
+      gérants partageant une vision stratégique et une passion pour
+      l’investissement immobilier. Leur expertise et leur engagement familial
+      sont les piliers de cette aventure entrepreneuriale.
+    </p>
   </div>
-  <p class="first">
-    Fondée le 11 janvier 2024, <span>LECOMTE INVESTMENTS</span> est une société
-    civile immobilière familiale inscrite au R.C.S de Caen sous le SIRET 983 377
-    037 00012. Cette société reflète notre ambition commune de bâtir un
-    patrimoine immobilier solide et durable.
-  </p>
-  <p>
-    La SCI est dirigée par <span>Brice et Pierre Lecomte</span>, deux associés
-    gérants partageant une vision stratégique et une passion pour
-    l’investissement immobilier. Leur expertise et leur engagement familial sont
-    les piliers de cette aventure entrepreneuriale.
-  </p>
+  <dl class="facts">
+    <div>
+      <dt>Création</dt>
+      <dd>11 janvier 2024</dd>
+    </div>
+    <div>
+      <dt>Forme</dt>
+      <dd>Société civile immobilière</dd>
+    </div>
+    <div>
+      <dt>Siège</dt>
+      <dd>Caen, Normandie</dd>
+    </div>
+    <div>
+      <dt>Gérants</dt>
+      <dd>Brice & Pierre Lecomte</dd>
+    </div>
+  </dl>
 </section>
-<section style="--delay: 0.2s">
+
+<section class="reveal" style="--delay: 0.2s">
   <div class="title">
     <i class="bx bxs-building-house" aria-hidden="true"></i>
     <h2>Biens Ciblés</h2>
   </div>
-  <div class="flex">
+  <div class="goods">
     @for (good of goods; track good.name) {
       <app-good [good]="good"></app-good>
     }
   </div>
 </section>
-<section style="--delay: 0.4s">
+
+<section class="reveal" style="--delay: 0.3s">
   <div class="title">
     <i class="bx bxs-donate-heart" aria-hidden="true"></i>
     <h2>Nos Valeurs</h2>
   </div>
-  <ul>
+  <ul class="values">
     <li>
-      <span>Transparence</span> : Garantir une communication ouverte et sincère
-      avec nos partenaires et locataires.
+      <i class="bx bx-show" aria-hidden="true"></i>
+      <span>Transparence</span>
+      <p>
+        Garantir une communication ouverte et sincère avec nos partenaires et
+        locataires.
+      </p>
     </li>
     <li>
-      <span>Engagement familial</span> : Construire un patrimoine solide et
-      prospère.
+      <i class="bx bxs-group" aria-hidden="true"></i>
+      <span>Engagement familial</span>
+      <p>Construire un patrimoine solide et prospère.</p>
     </li>
     <li>
-      <span>Qualité</span> : Proposer des biens confortables et bien entretenus.
+      <i class="bx bxs-star" aria-hidden="true"></i>
+      <span>Qualité</span>
+      <p>Proposer des biens confortables et bien entretenus.</p>
     </li>
     <li>
-      <span>Vision à long terme</span> : Privilégier des investissements stables
-      et durables.
+      <i class="bx bx-trending-up" aria-hidden="true"></i>
+      <span>Vision à long terme</span>
+      <p>Privilégier des investissements stables et durables.</p>
     </li>
   </ul>
-  <p>
+  <blockquote>
     Chez <span>LECOMTE INVESTMENTS</span>, nous croyons qu’un patrimoine
     immobilier de qualité repose sur une gestion éthique et responsable,
     orientée vers la satisfaction des locataires et la valorisation durable des
     investissements. Cette vision guide nos décisions pour bâtir un avenir
     solide et prometteur.
-  </p>
+  </blockquote>
 </section>
+
+<aside class="cta reveal" style="--delay: 0.4s">
+  <div>
+    <h2 class="display">Un projet immobilier ?</h2>
+    <p>Échangeons ensemble, nous vous répondons sous 48h.</p>
+  </div>
+  <a class="btn btn-gold" routerLink="/contact" title="Contactez-nous">
+    <i class="bx bxs-envelope" aria-hidden="true"></i>
+    <span>Contactez-nous</span>
+  </a>
+</aside>

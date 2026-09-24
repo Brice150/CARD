@@ -1,29 +1,45 @@
-<section>
-  <div class="front">
-    <img
-      [src]="imagePath + 'Logo.webp'"
-      alt="Logo SCI Lecomte Investments"
-      width="100"
-      height="100"
-      decoding="async"
-    />
-    <h1>{{ enterprise.titleFront }}</h1>
-  </div>
-  <div class="back">
-    <h1>{{ enterprise.titleBack }}</h1>
-    <h2>{{ enterprise.subtitleBack }}</h2>
-    <div class="gold-line"></div>
-    <div class="flex">
-      <i class="bx bxs-phone" aria-hidden="true"></i>
-      <span class="text">{{ enterprise.phoneNumbers }}</span>
+<div class="stage">
+  <section aria-label="Carte de visite">
+    <div class="front">
+      <img
+        [src]="imagePath + 'Logo.webp'"
+        alt="Logo SCI Lecomte Investments"
+        width="96"
+        height="96"
+        decoding="async"
+      />
+      <h2>{{ enterprise.titleFront }}</h2>
+      <span class="tagline">Société civile immobilière</span>
     </div>
-    <a
-      class="flex"
-      [href]="'mailto:' + enterprise.email"
-      title="Contactez-nous"
-    >
-      <i class="bx bxs-envelope" aria-hidden="true"></i>
-      <span class="text">{{ enterprise.email }}</span>
-    </a>
-  </div>
-</section>
+    <div class="back">
+      <div class="head">
+        <h2>{{ enterprise.titleBack }}</h2>
+        <p>{{ enterprise.subtitleBack }}</p>
+      </div>
+      <div class="gold-line"></div>
+      <div class="details">
+        <div class="flex">
+          <i class="bx bxs-phone" aria-hidden="true"></i>
+          <span class="text">{{ enterprise.phoneNumbers }}</span>
+        </div>
+        <a
+          class="flex"
+          [href]="'mailto:' + enterprise.email"
+          title="Contactez-nous"
+        >
+          <i class="bx bxs-envelope" aria-hidden="true"></i>
+          <span class="text">{{ enterprise.email }}</span>
+        </a>
+      </div>
+      <div class="band">
+        <img
+          [src]="imagePath + 'Logo.webp'"
+          alt=""
+          width="28"
+          height="28"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+</div>

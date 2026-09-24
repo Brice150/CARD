@@ -1,39 +1,33 @@
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 20px;
+  display: block;
 }
 
 section {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  width: 95%;
-  max-width: 800px;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--light-radius);
+  gap: 40px;
 }
 
-section h2 {
-  text-align: center;
-  margin: 10px;
-  padding: 0;
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--accent);
-}
-
-section .flex {
+header {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  gap: 20px;
+  gap: 14px;
+  text-align: center;
+}
+
+h2 {
+  font-size: clamp(34px, 4.5vw, 48px);
+}
+
+.subtitle {
+  max-width: 520px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
 }

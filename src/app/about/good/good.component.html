@@ -1,11 +1,13 @@
-<section>
-  <h3>{{ good().name }}</h3>
+<figure>
   <img
     [src]="imagePath + good().image"
     [alt]="good().name"
-    width="200"
-    height="150"
+    width="400"
+    height="300"
     loading="lazy"
     decoding="async"
   />
-</section>
+  <figcaption>
+    <h3>{{ good().name }}</h3>
+  </figcaption>
+</figure>

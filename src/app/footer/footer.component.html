@@ -1,0 +1,22 @@
+<footer>
+  <div class="inner">
+    <div class="identity">
+      <strong>{{ enterprise.titleFront }}</strong>
+      <span>Société civile immobilière familiale · Caen, Normandie</span>
+      <span>R.C.S Caen · SIRET 983 377 037 00012</span>
+    </div>
+    <div class="links">
+      <a [href]="'mailto:' + enterprise.email">
+        <i class="bx bxs-envelope" aria-hidden="true"></i>
+        {{ enterprise.email }}
+      </a>
+      <a routerLink="/contact">
+        <i class="bx bxs-message-dots" aria-hidden="true"></i>
+        Formulaire de contact
+      </a>
+    </div>
+  </div>
+  <p class="copyright">
+    © {{ year }} Lecomte Investments. Tous droits réservés.
+  </p>
+</footer>

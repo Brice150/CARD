@@ -1,6 +1,12 @@
 <section>
-  <h2>Qui êtes-vous ?</h2>
-  <div class="flex">
+  <header>
+    <p class="eyebrow">Votre profil</p>
+    <h2 class="display">Qui êtes-vous ?</h2>
+    <p class="subtitle">
+      Choisissez votre profil, nous vous orienterons vers le bon interlocuteur.
+    </p>
+  </header>
+  <div class="grid">
     @for (client of clients; track client.category) {
       <app-client [client]="client"></app-client>
     }

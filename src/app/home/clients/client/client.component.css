@@ -1,59 +1,97 @@
+:host {
+  display: block;
+}
+
 section {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  min-width: 280px;
-  height: 220px;
-  background-color: var(--primary);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--light-radius);
-  text-decoration: none;
+  align-items: flex-start;
+  gap: 18px;
+  height: 100%;
+  padding: 32px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--surface-raised) 0%,
+    var(--surface) 100%
+  );
+  border: 1px solid var(--line);
+  border-radius: var(--strong-radius);
+  box-shadow: var(--box-shadow-soft);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
-section h3 {
-  text-align: center;
-  margin: 10px;
-  padding: 0;
-  font-size: 20px;
-  color: var(--secondary);
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 32px;
+  right: 32px;
+  height: 2px;
+  background: var(--gold-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-gold);
+}
+
+section:hover::before {
+  opacity: 1;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  border: 1px solid var(--line-gold);
+}
+
+.icon i {
+  font-size: 26px;
+  color: var(--accent);
+}
+
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
   text-transform: capitalize;
+  color: var(--text);
 }
 
-section ul {
-  margin-top: 0;
-  width: 80%;
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-section ul li {
-  margin: 5px 0;
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-muted);
 }
 
-section a {
-  text-decoration: none;
-  padding: 12px;
+li i {
+  font-size: 18px;
   color: var(--accent);
-  border: none;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--light-radius);
-  background-color: var(--secondary);
-  margin-bottom: 10px;
-  transition: 0.5s ease;
-  cursor: pointer;
 }
 
-section a span {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--accent);
-  transition: 0.5s ease;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-section a:hover {
-  background-color: var(--accent);
-}
-
-section a:hover span {
-  color: var(--secondary);
+a {
+  margin-top: auto;
 }
