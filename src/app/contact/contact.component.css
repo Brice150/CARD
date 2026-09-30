@@ -98,14 +98,32 @@
   background: var(--accent-soft);
 }
 
-.info li a {
+/* Coordonnées copiables : un bouton qui garde l'allure du texte. */
+.info li .copy {
+  padding: 0;
+  border: 0;
+  background: none;
   color: inherit;
-  text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: copy;
   transition: color 0.2s ease;
 }
 
-.info li a:hover {
+.info li .copy:hover,
+.info li .copy.is-copied {
   color: var(--accent);
+}
+
+.info li .bx-check {
+  animation: copied-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes copied-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
 }
 
 /* Formulaire */
@@ -176,5 +194,46 @@ mat-error span {
 
   .actions .btn {
     flex: 1;
+  }
+}
+
+/* Incomplete form: one shake, the errors say the rest. */
+form.shake {
+  animation: contact-shake 0.4s ease;
+}
+
+@keyframes contact-shake {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.btn-gold.is-sending {
+  cursor: progress;
+  opacity: 0.85;
+}
+
+/* The icon flies off on send, and the check pops once the message is in. */
+.btn-gold i {
+  transition: transform 0.3s ease;
+}
+
+.btn-gold:hover:not(.is-sending, .is-sent) .bxs-send {
+  transform: translate(3px, -3px);
+}
+
+.btn-gold.is-sent i {
+  animation: contact-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes contact-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
   }
 }

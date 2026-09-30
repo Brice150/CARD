@@ -41,7 +41,8 @@ footer {
   gap: 10px;
 }
 
-.links a {
+.links a,
+.links .copy {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -51,12 +52,24 @@ footer {
   transition: color 0.2s ease;
 }
 
-.links a i {
+/* L'adresse se copie au clic : un bouton qui garde l'allure des liens. */
+.links .copy {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: copy;
+}
+
+.links a i,
+.links .copy i {
   font-size: 18px;
   color: var(--accent);
 }
 
-.links a:hover {
+.links a:hover,
+.links .copy:hover,
+.links .copy.is-copied {
   color: var(--accent);
 }
 

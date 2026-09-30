@@ -6,10 +6,22 @@
       <span>R.C.S Caen · SIRET 983 377 037 00012</span>
     </div>
     <div class="links">
-      <a [href]="'mailto:' + enterprise.email">
-        <i class="bx bxs-envelope" aria-hidden="true"></i>
+      <button
+        type="button"
+        class="copy"
+        [appCopyText]="enterprise.email"
+        appCopyLabel="Adresse e-mail copiée"
+        #copyEmail="appCopyText"
+        aria-label="Copier l’adresse e-mail"
+      >
+        <i
+          class="bx"
+          [class.bxs-envelope]="!copyEmail.copied()"
+          [class.bx-check]="copyEmail.copied()"
+          aria-hidden="true"
+        ></i>
         {{ enterprise.email }}
-      </a>
+      </button>
       <a routerLink="/contact">
         <i class="bx bxs-message-dots" aria-hidden="true"></i>
         Formulaire de contact

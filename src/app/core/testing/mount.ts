@@ -1,10 +1,13 @@
 import { provideZonelessChangeDetection, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
+import { provideToastr } from 'ngx-toastr';
 
 /**
- * Monte un composant autonome avec le strict nécessaire : détection zoneless et routeur, que
- * plusieurs composants réclament via `routerLink`.
+ * Monte un composant autonome avec le strict nécessaire : détection zoneless, routeur (que
+ * plusieurs composants réclament via `routerLink`) et notifications (la copie des coordonnées les
+ * utilise).
  *
  * Les entrées sont posées avant le premier rendu, pour que le composant ne soit jamais vu dans un
  * état que l'application ne produit pas.
@@ -15,7 +18,12 @@ export async function mount<T>(
 ): Promise<ComponentFixture<T>> {
   await TestBed.configureTestingModule({
     imports: [component],
-    providers: [provideZonelessChangeDetection(), provideRouter([])],
+    providers: [
+      provideZonelessChangeDetection(),
+      provideRouter([]),
+      provideNoopAnimations(),
+      provideToastr(),
+    ],
   }).compileComponents();
 
   const fixture = TestBed.createComponent(component);

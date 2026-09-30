@@ -19,30 +19,6 @@ section {
   border: 1px solid var(--line);
   border-radius: var(--strong-radius);
   box-shadow: var(--box-shadow-soft);
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-}
-
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 32px;
-  right: 32px;
-  height: 2px;
-  background: var(--gold-gradient);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-section:hover {
-  transform: translateY(-4px);
-  border-color: var(--line-gold);
-}
-
-section:hover::before {
-  opacity: 1;
 }
 
 .icon {

@@ -7,6 +7,7 @@ import {
   withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
+  withViewTransitions,
 } from '@angular/router';
 import { provideToastr } from 'ngx-toastr';
 
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withPreloading(SmartPreloading),
       withComponentInputBinding(),
+      withViewTransitions({ skipInitialTransition: true }),
     ),
     provideToastr(),
     provideAnimationsAsync(),

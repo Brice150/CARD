@@ -1,45 +1,137 @@
-<div class="stage">
-  <section aria-label="Carte de visite">
-    <div class="front">
-      <img
-        [src]="imagePath + 'Logo.webp'"
-        alt="Logo SCI Lecomte Investments"
-        width="96"
-        height="96"
-        decoding="async"
-      />
-      <h2>{{ enterprise.titleFront }}</h2>
-      <span class="tagline">Société civile immobilière</span>
-    </div>
-    <div class="back">
-      <div class="head">
-        <h2>{{ enterprise.titleBack }}</h2>
-        <p>{{ enterprise.subtitleBack }}</p>
-      </div>
-      <div class="gold-line"></div>
-      <div class="details">
-        <div class="flex">
-          <i class="bx bxs-phone" aria-hidden="true"></i>
-          <span class="text">{{ enterprise.phoneNumbers }}</span>
-        </div>
-        <a
-          class="flex"
-          [href]="'mailto:' + enterprise.email"
-          title="Contactez-nous"
-        >
-          <i class="bx bxs-envelope" aria-hidden="true"></i>
-          <span class="text">{{ enterprise.email }}</span>
-        </a>
-      </div>
-      <div class="band">
+<div
+  class="stage"
+  [style.--rx.deg]="tilt().x"
+  [style.--ry.deg]="tilt().y"
+  (pointermove)="onPointerMove($event)"
+  (pointerleave)="resetTilt()"
+>
+  <!-- Infobulle au survol de la carte, ou quand le bouton ci-dessous a le
+  focus clavier. -->
+  <span class="tooltip" [class.is-copied]="copied()" aria-hidden="true">
+    <i
+      class="bx"
+      [class.bx-rotate-right]="!copied() && !hovered()"
+      [class.bx-copy]="!copied() && hovered()"
+      [class.bx-check]="copied()"
+    ></i>
+    {{ hint() }}
+  </span>
+
+  <div class="tilt">
+    <!-- Le clic retourne la carte pour la souris et le doigt ; le bouton
+    invisible ci-dessous fait de même au clavier et pour les lecteurs d'écran. La carte
+    ne peut pas être elle-même un bouton : son verso contient les boutons de
+    copie des coordonnées. -->
+    <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+    <section
+      aria-label="Carte de visite"
+      [class.is-flipped]="flipped()"
+      (click)="onCardClick($event)"
+    >
+      <div class="front" [attr.aria-hidden]="flipped()">
         <img
           [src]="imagePath + 'Logo.webp'"
-          alt=""
-          width="28"
-          height="28"
+          alt="Logo SCI Lecomte Investments"
+          width="96"
+          height="96"
           decoding="async"
         />
+        <h2>{{ enterprise.titleFront }}</h2>
+        <span class="tagline">Société civile immobilière</span>
       </div>
-    </div>
-  </section>
+      <div class="back" [attr.aria-hidden]="!flipped()">
+        <div class="head">
+          <!-- L'esperluette de Playfair est trop ornée : elle prend une forme
+          plus sobre, à part du reste du titre. -->
+          <h2>
+            @for (part of titleBackParts; track $index; let last = $last) {
+              {{ part }}
+              @if (!last) {
+                <span class="amp">&amp;</span>
+              }
+            }
+          </h2>
+          <p>{{ enterprise.subtitleBack }}</p>
+        </div>
+        <div class="gold-line"></div>
+        <div class="details">
+          <div class="flex">
+            <i
+              class="bx"
+              [class.bxs-phone]="!phones.includes(copied() ?? '')"
+              [class.bx-check]="phones.includes(copied() ?? '')"
+              aria-hidden="true"
+            ></i>
+            @for (phone of phones; track phone; let last = $last) {
+              <button
+                type="button"
+                class="copy"
+                [class.is-copied]="copied() === phone"
+                [attr.tabindex]="flipped() ? null : -1"
+                [attr.aria-label]="'Copier le numéro ' + phone"
+                [appCopyText]="phone"
+                (copiedText)="onCopied($event)"
+                (mouseenter)="hovered.set('phone')"
+                (mouseleave)="hovered.set(null)"
+                (focus)="hovered.set('phone')"
+                (blur)="hovered.set(null)"
+              >
+                {{ phone }}
+              </button>
+              @if (!last) {
+                <span class="separator" aria-hidden="true">|</span>
+              }
+            }
+          </div>
+          <div class="flex">
+            <i
+              class="bx"
+              [class.bxs-envelope]="copied() !== enterprise.email"
+              [class.bx-check]="copied() === enterprise.email"
+              aria-hidden="true"
+            ></i>
+            <button
+              type="button"
+              class="copy"
+              [class.is-copied]="copied() === enterprise.email"
+              [attr.tabindex]="flipped() ? null : -1"
+              aria-label="Copier l’adresse e-mail"
+              [appCopyText]="enterprise.email"
+              (copiedText)="onCopied($event)"
+              (mouseenter)="hovered.set('email')"
+              (mouseleave)="hovered.set(null)"
+              (focus)="hovered.set('email')"
+              (blur)="hovered.set(null)"
+            >
+              {{ enterprise.email }}
+            </button>
+          </div>
+        </div>
+        <div class="band">
+          <img
+            [src]="imagePath + 'Logo.webp'"
+            alt=""
+            width="28"
+            height="28"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
+
+<!-- Annonce la copie aux lecteurs d'écran. -->
+<span class="sr-only" aria-live="polite">{{
+  copied() ? 'Copié : ' + copied() : ''
+}}</span>
+
+<button
+  type="button"
+  class="flip-button"
+  [attr.aria-pressed]="flipped()"
+  (click)="toggle()"
+>
+  <i class="bx bx-rotate-right" aria-hidden="true"></i>
+  {{ flipped() ? 'Voir le recto' : 'Voir nos coordonnées' }}
+</button>

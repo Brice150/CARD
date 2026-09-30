@@ -10,6 +10,16 @@ figure {
   border-radius: var(--light-radius);
   border: 1px solid var(--line);
   box-shadow: var(--box-shadow-soft);
+  transition:
+    translate 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+figure:hover {
+  translate: 0 -4px;
+  border-color: var(--line-gold);
+  box-shadow: var(--box-shadow);
 }
 
 img {

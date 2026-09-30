@@ -1,3 +1,4 @@
+import { RevealDirective } from '../shared/directives/reveal.directive';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Good } from '../core/interfaces/good';
@@ -6,7 +7,7 @@ import { GoodComponent } from './good/good.component';
 
 @Component({
   selector: 'app-about',
-  imports: [GoodComponent, RouterLink],
+  imports: [GoodComponent, RouterLink, RevealDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

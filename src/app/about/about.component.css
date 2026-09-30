@@ -134,14 +134,10 @@ span {
   border-radius: var(--light-radius);
   background: rgba(0, 0, 0, 0.18);
   border: 1px solid var(--line);
-  transition: border-color 0.3s ease;
-}
-
-.values li:hover {
-  border-color: var(--line-gold);
 }
 
 .values li i {
+  align-self: flex-start;
   font-size: 26px;
   color: var(--accent);
 }

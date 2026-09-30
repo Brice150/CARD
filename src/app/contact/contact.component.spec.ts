@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Mock } from 'vitest';
 import { environment } from '../../environments/environment';
 import { Category } from '../core/enums/category';
-import { ContactComponent } from './contact.component';
+import { ContactComponent, SENT_FEEDBACK_MS } from './contact.component';
 
 describe('ContactComponent', () => {
   let fixture: ComponentFixture<ContactComponent>;
@@ -69,7 +69,29 @@ describe('ContactComponent', () => {
     fixture.autoDetectChanges();
   });
 
-  afterEach(() => http.verify());
+  afterEach(() => {
+    http.verify();
+    vi.useRealTimers();
+  });
+
+  it('copies a phone number instead of dialing it', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } });
+
+    const button: HTMLButtonElement =
+      fixture.nativeElement.querySelector('.info .copy');
+    button.click();
+    await fixture.whenStable();
+
+    expect(writeText).toHaveBeenCalledWith(component.phones[0]);
+    expect(toastr.info).toHaveBeenCalledWith(
+      'Numéro copié',
+      'Copie',
+      expect.anything(),
+    );
+    expect(fixture.nativeElement.querySelector('.info .bx-check')).toBeTruthy();
+    vi.unstubAllGlobals();
+  });
 
   it('refuses to send an incomplete form and shows why', () => {
     submit();
@@ -133,5 +155,56 @@ describe('ContactComponent', () => {
 
     expect(component.contactForm.controls.name.value).toBe('Brice');
     expect(toastr.error).toHaveBeenCalled();
+    // The button is ready for another attempt.
+    expect(component.sending()).toBe(false);
+    expect(rendered()).toContain('Envoyer le message');
+  });
+
+  it('shakes an incomplete form once', () => {
+    submit();
+    rendered();
+    const form: HTMLFormElement = fixture.nativeElement.querySelector('form');
+    expect(form.classList).toContain('shake');
+
+    form.dispatchEvent(new Event('animationend'));
+    rendered();
+    expect(form.classList).not.toContain('shake');
+  });
+
+  it('waits for the answer and sends nothing on a second click', () => {
+    fillIn();
+    submit();
+    expect(rendered()).toContain('Envoi en cours');
+
+    submit();
+
+    http.expectOne(environment.contactEndpoint).flush({});
+  });
+
+  it('shows a check once the message is sent, then offers to send again', () => {
+    vi.useFakeTimers();
+    fillIn();
+    submit();
+    http.expectOne(environment.contactEndpoint).flush({});
+
+    expect(rendered()).toContain('Message envoyé');
+
+    vi.advanceTimersByTime(SENT_FEEDBACK_MS);
+    expect(rendered()).toContain('Envoyer le message');
+  });
+
+  it('restarts the check when a second message goes through', () => {
+    vi.useFakeTimers();
+    fillIn();
+    submit();
+    http.expectOne(environment.contactEndpoint).flush({});
+    vi.advanceTimersByTime(SENT_FEEDBACK_MS - 100);
+
+    fillIn();
+    submit();
+    http.expectOne(environment.contactEndpoint).flush({});
+    vi.advanceTimersByTime(200);
+
+    expect(component.sent()).toBe(true);
   });
 });

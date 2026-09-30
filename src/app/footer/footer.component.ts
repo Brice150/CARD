@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Enterprise } from '../core/interfaces/enterprise';
 import { enterprise } from '../shared/data/enterprise';
+import { CopyTextDirective } from '../shared/directives/copy-text.directive';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink],
+  imports: [RouterLink, CopyTextDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

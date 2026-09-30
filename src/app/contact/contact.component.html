@@ -1,29 +1,56 @@
-<header class="page-head reveal" style="--delay: 0s">
+<header class="page-head reveal" appReveal style="--delay: 0s">
   <p class="eyebrow">Contact</p>
   <h1 class="display">Parlons de <em>votre projet</em>.</h1>
 </header>
 
 <div class="layout">
-  <aside class="info reveal" style="--delay: 0.1s">
+  <aside class="info card-hover reveal" appReveal style="--delay: 0.1s">
     <div class="promise">
-      <i class="bx bxs-time-five" aria-hidden="true"></i>
+      <i class="bx bxs-time-five hover-icon" aria-hidden="true"></i>
       <div>
         <h2>Nous vous répondrons sous 48h !</h2>
         <p>Locataire, acheteur, vendeur ou professionnel, écrivez-nous.</p>
       </div>
     </div>
     <ul>
+      <!-- Un clic copie la coordonnée, comme sur la carte de visite. -->
       @for (phone of phones; track phone) {
         <li>
-          <i class="bx bxs-phone" aria-hidden="true"></i>
-          <a [href]="'tel:+33' + phone.replaceAll(' ', '').slice(1)">{{
-            phone
-          }}</a>
+          <i
+            class="bx"
+            [class.bxs-phone]="!copyPhone.copied()"
+            [class.bx-check]="copyPhone.copied()"
+            aria-hidden="true"
+          ></i>
+          <button
+            type="button"
+            class="copy"
+            [appCopyText]="phone"
+            appCopyLabel="Numéro copié"
+            #copyPhone="appCopyText"
+            [attr.aria-label]="'Copier le numéro ' + phone"
+          >
+            {{ phone }}
+          </button>
         </li>
       }
       <li>
-        <i class="bx bxs-envelope" aria-hidden="true"></i>
-        <a [href]="'mailto:' + enterprise.email">{{ enterprise.email }}</a>
+        <i
+          class="bx"
+          [class.bxs-envelope]="!copyEmail.copied()"
+          [class.bx-check]="copyEmail.copied()"
+          aria-hidden="true"
+        ></i>
+        <button
+          type="button"
+          class="copy"
+          [appCopyText]="enterprise.email"
+          appCopyLabel="Adresse e-mail copiée"
+          #copyEmail="appCopyText"
+          aria-label="Copier l’adresse e-mail"
+        >
+          {{ enterprise.email }}
+        </button>
       </li>
       <li>
         <i class="bx bxs-map" aria-hidden="true"></i>
@@ -32,8 +59,13 @@
     </ul>
   </aside>
 
-  <section class="reveal" style="--delay: 0.2s">
-    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+  <section class="reveal" appReveal style="--delay: 0.2s">
+    <form
+      [formGroup]="contactForm"
+      [class.shake]="shaking()"
+      (animationend)="shaking.set(false)"
+      (ngSubmit)="submitForm()"
+    >
       <div class="row">
         <mat-form-field appearance="outline">
           <mat-label>Nom</mat-label>
@@ -137,9 +169,24 @@
           <i class="bx bx-reset" aria-hidden="true"></i>
           <span>Effacer</span>
         </button>
-        <button class="btn btn-gold" type="submit" title="Envoyer le message">
-          <span>Envoyer le message</span>
-          <i class="bx bxs-send" aria-hidden="true"></i>
+        <button
+          class="btn btn-gold"
+          type="submit"
+          title="Envoyer le message"
+          [class.is-sending]="sending()"
+          [class.is-sent]="sent()"
+          [attr.aria-busy]="sending()"
+        >
+          @if (sending()) {
+            <span>Envoi en cours</span>
+            <i class="bx bx-loader-alt bx-spin" aria-hidden="true"></i>
+          } @else if (sent()) {
+            <span>Message envoyé</span>
+            <i class="bx bx-check" aria-hidden="true"></i>
+          } @else {
+            <span>Envoyer le message</span>
+            <i class="bx bxs-send" aria-hidden="true"></i>
+          }
         </button>
       </div>
     </form>

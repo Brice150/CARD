@@ -204,10 +204,105 @@ app-root > main {
   color: var(--accent);
 }
 
+/* Survol des cartes : la carte se soulève, sa bordure se dore, un halo
+   doré monte du haut et un filet doré se déroule. Le soulèvement passe par
+   `translate`, indépendant du `transform` que l'apparition `.reveal` garde
+   à la fin de son animation. */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    translate 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    130% 110% at 50% 0%,
+    var(--accent-soft),
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.card-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--gold-gradient);
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-hover:hover,
+.card-hover:focus-within {
+  translate: 0 -4px;
+  border-color: var(--line-gold);
+  box-shadow: var(--box-shadow);
+}
+
+.card-hover:hover::before,
+.card-hover:focus-within::before {
+  opacity: 1;
+}
+
+.card-hover:hover::after,
+.card-hover:focus-within::after {
+  scale: 1 1;
+}
+
+/* L'icône de la carte répond d'un petit rebond. */
+.card-hover .hover-icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-hover:hover .hover-icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* L'apparition attend que le bloc soit à l'écran : la directive `appReveal` pose
+   `.is-visible`, qui relâche l'animation. */
 .reveal {
   opacity: 0;
   animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   animation-delay: var(--delay, 0s);
+  animation-play-state: paused;
+}
+
+.reveal.is-visible {
+  animation-play-state: running;
+}
+
+/* Changement de page : l'ancienne s'efface, la nouvelle monte en fondu. */
+::view-transition-old(root) {
+  animation: page-leave 0.18s ease both;
+}
+
+::view-transition-new(root) {
+  animation: page-enter 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
 }
 
 @keyframes reveal {
@@ -253,4 +348,12 @@ app-root > main {
 .toast-container .ngx-toastr.custom.error {
   background-color: #8c2f2a;
   border: 1px solid var(--danger);
+}
+
+/* Les pseudo-éléments de transition échappent au sélecteur universel. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
 }
