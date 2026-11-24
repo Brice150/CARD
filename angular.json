@@ -137,6 +137,7 @@
     }
   },
   "cli": {
+    "cache": { "environment": "all" },
     "analytics": false,
     "schematicCollections": ["angular-eslint"]
   }
